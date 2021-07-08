@@ -46,7 +46,8 @@ function setup() {
   // Set the game's framerate to 5 (or whatever you prefer)
   frameRate(5);
   // Load the video
-
+  video = createCapture(VIDEO, videoReady);
+  video.parent(canvasDiv);
 }
 
 function draw() {
@@ -70,7 +71,7 @@ function drawGameObjects() {
     textP.html("Score: " + score);
   };
   // Draw the snake, but first check the user's position
-
+checkPosition();
   snake.update();
   snake.show();
   // Draw the food
@@ -93,7 +94,8 @@ function createFood() {
 }
 
 function checkPosition() {
-  if(keyCode === UP_ARROW && snake.yDirection === 0) {
+  let positionLabel = textP2.html().toLowerCase();
+  if(positionLabel.inludes("up" && snake.yDirection == 0) {
     snake.setDirection(0, -1);
   } else if(keyCode === DOWN_ARROW && snake.yDirection === 0) {
     snake.setDirection(0, 1);
@@ -123,7 +125,7 @@ function featureExtractorLoaded() {
   knnClassifier.load("model/myKNN.json", function () {
     isModelReady = true;
     // Reset the game
-
+    resetGame();
   });
 }
 
